@@ -12,31 +12,39 @@ catImage.style.zIndex = '9999';
 
 document.body.append(catImage);
 
-let offsetX, offsetY;
-let isDragging = false;
+//from https://javascript.info/mouse-drag-and-drop
+catImage.onmousedown = function(event) {
 
-// Event listener for mouse down event
-catImage.addEventListener('mousedown', function(event) {
-    isDragging = true;
-    offsetX = event.clientX - parseFloat(catImage.style.left);
-    offsetY = event.clientY - parseFloat(catImage.style.top);
-});
+	//offset between mouse pointer and left/top of a rectangle encompassing cat object
 
-// Event listener for mouse move event
-document.addEventListener('mousemove', function(event) {
-    if (isDragging) {
-        let x = event.clientX - offsetX;
-        let y = event.clientY - offsetY;
-        catImage.style.left = x + 'px';
-        catImage.style.top = y + 'px';
-    }
-});
+	catImage.style.position = 'absolute';
+	catImage.style.zIndex = 1000;
+	document.body.append(catImage);
+  
+	moveAt(event.pageX, event.pageY);
+  
+	function moveAt(pageX, pageY) {
+		catImage.style.left = pageX + 'px';
+		catImage.style.top = pageY + 'px';
+	}
+  
+	function onMouseMove(event) {
+	  moveAt(event.pageX, event.pageY);
+	}
+  
+	document.addEventListener('mousemove', onMouseMove);
+  
+	catImage.onmouseup = function() {
+	  document.removeEventListener('mousemove', onMouseMove);
+	  catImage.onmouseup = null;
+	};
 
-// Event listener for mouse up event
-document.addEventListener('mouseup', function() {
-    isDragging = false;
-});
+  
+  };
 
+catImage.ondragstart = function() {
+	return false;
+}
 
 // recieve a message:
 chrome.runtime.onMessage.addListener(
