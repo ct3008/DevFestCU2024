@@ -1,0 +1,25 @@
+{
+	"manifest_version": 3,
+	"name": "Cat Image Extension",
+	"version": "1.0",
+	"description": "An extension that displays a cat image.",
+	"permissions": ["activeTab"],
+	"action": {
+	  "default_popup": "popup.html",
+	  "default_icon": "hello_extensions.png"
+	},
+	"content_scripts": [
+	  {
+		"matches": ["<all_urls>"],
+		"js": ["content.js"]
+	  }
+	],
+	"web_accessible_resources": [
+		{
+		  "resources": [ "cat.gif" ],
+		  "matches": [ "https://*/*" ]
+		}
+	  ]
+  }
+
+  
