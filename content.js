@@ -1,6 +1,7 @@
 // content.js
 let catImage = document.createElement('img');
 catImage.src = chrome.runtime.getURL('cat.gif');
+catImage.id = "test"
 catImage.style.position = 'fixed';
 catImage.style.top = '10%';
 catImage.style.left = '90%';
@@ -35,3 +36,22 @@ document.addEventListener('mousemove', function(event) {
 document.addEventListener('mouseup', function() {
     isDragging = false;
 });
+
+
+// recieve a message:
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+      console.log(sender.tab ?
+                  "from a content script:" + sender.tab.url :
+                  "from the extension");
+      if (request.greeting === "hello") {
+        if (catImage.style.display == "none"){
+            catImage.style.display = "block";
+        }
+        else {
+            catImage.style.display = "none";
+        }
+        sendResponse({farewell: "goodbye"});
+      }
+    }
+  );
