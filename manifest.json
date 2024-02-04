@@ -3,10 +3,10 @@
 	"name": "Cat Image Extension",
 	"version": "1.0",
 	"description": "An extension that displays a cat image.",
-	"permissions": ["activeTab"],
+	"permissions": ["activeTab","storage"],
 	"action": {
 	  "default_popup": "popup.html",
-	  "default_icon": "hello_extensions.png"
+	  "default_icon": "./image/hello_extensions.png"
 	},
 	"content_scripts": [
 	  {
@@ -16,7 +16,7 @@
 	],
 	"web_accessible_resources": [
 		{
-		  "resources": [ "cat.gif" ],
+		  "resources": [ "image/cat.gif" ],
 		  "matches": [ "https://*/*" ]
 		}
 	  ]

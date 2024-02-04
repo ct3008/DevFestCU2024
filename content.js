@@ -1,6 +1,6 @@
 // content.js
 let catImage = document.createElement('img');
-catImage.src = chrome.runtime.getURL('cat.gif');
+catImage.src = chrome.runtime.getURL('image/cat.gif');
 catImage.id = "test"
 catImage.style.position = 'fixed';
 catImage.style.top = '10%';
@@ -10,9 +10,10 @@ catImage.style.maxWidth = '30%'; // Ensure the image doesn't exceed the viewport
 catImage.style.maxHeight = '30%'; // Ensure the image doesn't exceed the viewport height
 catImage.style.zIndex = '9999';
 
+
 document.body.append(catImage);
 
-//from https://javascript.info/mouse-drag-and-drop
+//adapted from https://javascript.info/mouse-drag-and-drop
 catImage.onmousedown = function(event) {
 
 	//offset between mouse pointer and left/top of a rectangle encompassing cat object

@@ -3,23 +3,184 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
   <title>Cat Image Extension</title>
   <style>
     body {
       margin: 0;
       padding: 0;
     }
-    img {
-      width: 100%;
-      height: 100%;
+
+	li {
+		display: inline;
+	}
+	.hr_new {
+		 margin: 5px;
+	}
+    .img_cat {
+      width: 30%;
+      height: auto;
+	  display: inline-block;
+    }
+
+    .img_bar {
+      width: 60%;
+      height: auto;
+    }
+
+    .container {
+      width: 400px;
+      height: 200px; 
+    }
+
+	.containers {
+		margin-top: 0px;
+    	width: 400px; 
+    	height: 180px; 
+    }
+	.bed {
+		position: relative;
+		margin-left: 20px;
+		margin-top: 20%;
+
+	}
+	.food {
+		position: relative;
+		margin-left: 50%;
+		margin-top: -10%;
+	}
+
+	.toy {
+		position: relative;
+		margin-left: 90%;
+		margin-top: -10%;
+
+	}
+	#score_box {
+		border: 3px solid black;
+		width: 200px;
+		height: 50px;
+		display: inline-block;
+
+	}
+	#inline_it {
+		display: inline-block;
+	}
+	.price-button {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .price-button.equipped {
+      color: green;
     }
   </style>
 </head>
 <body>
-  <button id="mybutton">show/hide</button>
-  <div id="cat">
-    <img src="./cat.png" alt="Cat Image">
-  </div>
+	<div class="container">
+		<button id="mybutton">show/hide</button>
+		<div id="inline_it">
+			<img id="cat" src="./image/cat.png" alt="Cat Image" class="img_cat">
+
+			<div id="score_box">
+			</div>
+		</div>
+		<hr class="hr_new">
+	</div>
+	<div class="row col-12">
+		<div id="homepage" class="col-3">
+			<img src="./image/home.png" class="img_bar">
+		</div>
+		<div id="milestone" class="col-3">
+			
+			<img src="./image/milestone.png" class="img_bar">
+		</div>
+		<div id="settings" class="col-3">
+			
+			<img src="./image/settings.png" class="img_bar">
+		</div>
+		<div id="store" class="col-3">
+
+			<img src="./image/store.png" class="img_bar">
+		</div>
+	</div>
+	<div class="containers">
+		<div id="id0">
+			<div>
+				<img id="cat2" src="./image/cat.png" alt="Cat Image" class="img_cat">
+			</div>
+			<div class="bed">
+				<img id="bed" src="./image/basic_bed.png" width="20%" height="auto">
+			</div>
+			<div class="food">
+				<img id="food" src="./image/basic_food.png" width="30%" height="auto">
+			</div>
+			<div class="toy">
+				<img id="toy" src="./image/basic_toy.png" width="60%" height="auto">
+			</div>
+
+		</div>
+		<div id="1">first</div>
+		<div id="2">second</div>
+		<div id="3">
+			<div class="containers">
+				<div class="col-3">
+					<h2>Bed</h2>
+					<div class="bed">
+						<img src="./image/bed1.png" width="100%" height="auto">
+						<button class="price-button" data-item="bed1" data-price="50">Points: 50</button>
+						<img src="./image/bed2.png" width="100%" height="auto">
+						<button class="price-button" data-item="bed2" data-price="100">Points: 100</button>
+						<img src="./image/bed3.png" width="100%" height="auto">
+						<button class="price-button" data-item="bed3" data-price="250">Points: 250</button>
+					</div>
+				</div>
+				
+				<div class="col-3">
+					<h2>Food</h2>
+					<div class="food">
+						<img src="./image/food1.png" width="150%" height="auto">
+						<button class="price-button" data-item="food1" data-price="10">Points: 10</button>
+						<img src="./image/food2.png" width="150%" height="auto">
+						<button class="price-button" data-item="food2" data-price="50">Points: 50</button>
+						<img src="./image/food3.png" width="150%" height="auto">
+						<button class="price-button" data-item="food3" data-price="100">Points: 100</button>
+					</div>
+					
+				</div>
+				
+				<div class="col-3">
+					<h2>Toy</h2>
+					<div class="toy">
+						<img src="./image/toy1.png" width="600%" height="auto">
+						<button class="price-button" data-item="toy1" data-price="20">Points: 20</button>
+						<img src="./image/toy2.png" width="700%" height="auto">
+						<button class="price-button" data-item="toy2" data-price="80">Points: 80</button>
+						<img src="./image/toy3.png" width="300%" height="auto">
+						<button class="price-button" data-item="toy3" data-price="150">Points: 150</button>
+					</div>
+
+				</div>
+				<div id="accessory" class="col-3">
+					<h2>Accessory</h2>
+					<div class="accessory">
+						<img src="./image/access1.png" width="60%" height="auto">
+						<button class="price-button" data-item="access1" data-price="20">Points: 70</button>
+						<img src="./image/access2.png" width="50%" height="auto">
+						<button class="price-button" data-item="access2" data-price="20">Points: 150</button>
+						<img src="./image/access3.png" width="60%" height="auto">
+						<button class="price-button" data-item="access3" data-price="20">Points: 220</button>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
   <script src="popup.js"></script>
+
 </body>
 </html>
