@@ -47,7 +47,7 @@
 	.food {
 		position: relative;
 		margin-left: 50%;
-		margin-top: -10%;
+		margin-top: -15%;
 	}
 
 	.toy {
@@ -73,8 +73,47 @@
       text-decoration: underline;
     }
 
-    .price-button.equipped {
-      color: green;
+    .achievement {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .achievement-text {
+      margin-right: 10px;
+    }
+
+    .checkbox {
+      width: 20px;
+      height: 20px;
+      border: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      background-color: red; /* Default to red X */
+    }
+	.achievement_text {
+		font-size: 15px;
+		font-weight: bold;
+	}
+	.settings_text {
+		font-size: 15px;
+		font-weight: bold;
+	}
+	.textbox-container {
+      margin-bottom: 20px;
+    }
+
+    .post-container {
+      margin-top: 20px;
+    }
+
+    .post {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
     }
   </style>
 </head>
@@ -122,8 +161,54 @@
 			</div>
 
 		</div>
-		<div id="1">first</div>
-		<div id="2">second</div>
+		<div id="1">
+			<div class="achievement_text">
+				Achievements
+			</div>
+			<div class="achievement">
+				<span class="achievement-text">Obtain 100 positive points +15</span>
+				<div class="checkbox">&#x2717;</div>
+			  </div>
+		  
+			  <div class="achievement">
+				<span class="achievement-text">Spend less than 15 minutes on a banned site +15</span>
+				<div class="checkbox">&#x2717;</div>
+			  </div>
+		  
+			  <div class="achievement">
+				<span class="achievement-text">Spend less than 5 hours online in one day +15</span>
+				<div class="checkbox">&#x2717;</div>
+			  </div>
+
+			  <div class="achievement">
+				<span class="achievement-text">Obtain 300 positive points +30</span>
+				<div class="checkbox">&#x2717;</div>
+			  </div>
+
+			  <div class="achievement">
+				<span class="achievement-text">Go without using device for one full day +30</span>
+				<div class="checkbox">&#x2717;</div>
+			  </div>
+
+			
+		</div>
+		<div id="2">
+			<div class="settings_text">
+				Settings
+			</div>
+			<div>
+				<input type="text" id="textbox1" placeholder="Good URLs">
+				<button id="postButton1">Post</button>
+			  </div>
+			  <div class="post-list" id="postList1"></div>
+			  <div>
+				<input type="text" id="textbox2" placeholder="Baaaaad URLs">
+				<button id="postButton2">Post</button>
+			  </div>
+			  
+			  <div class="post-list" id="postList2"></div>
+
+		</div>
 		<div id="3">
 			<div class="containers">
 				<div class="col-3">

@@ -11,6 +11,7 @@ catImage.style.maxHeight = '30%'; // Ensure the image doesn't exceed the viewpor
 catImage.style.zIndex = '9999';
 
 
+
 document.body.append(catImage);
 
 //adapted from https://javascript.info/mouse-drag-and-drop

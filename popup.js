@@ -134,6 +134,62 @@ z.onclick = function() {
 	d.style.display = "block"
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    const postButton1 = document.getElementById("postButton1");
+    const postButton2 = document.getElementById("postButton2");
+    const textbox1 = document.getElementById("textbox1");
+    const textbox2 = document.getElementById("textbox2");
+    const postList1 = document.getElementById("postList1");
+    const postList2 = document.getElementById("postList2");
+
+    function addPost(text, parent) {
+        const postElement = document.createElement("div");
+        postElement.textContent = text;
+        postElement.classList.add("post");
+        parent.appendChild(postElement);
+    }
+
+    function postHandler(textbox, postList) {
+        const button = textbox.nextElementSibling;
+		const posts = postList.querySelectorAll(".post");
+		if (posts.length >= 3) {
+			button.disabled = true;
+		} else {
+			button.addEventListener("click", function () {
+				const text = textbox.value.trim();
+				if (text !== "") {
+					addPost(text, postList);
+					textbox.value = "";
+				}
+				if (postList.querySelectorAll(".post").length >= 3) {
+                    button.disabled = true;
+                }
+			});
+		}
+        
+
+        textbox.addEventListener("keypress", function (event) {
+			
+            if (event.key === "Enter") {
+                const text = textbox.value.trim();
+                if (text !== "" && (postList.querySelectorAll(".post").length < 3)) {
+                    addPost(text, postList);
+                    textbox.value = "";
+                }
+            }
+			if (postList.querySelectorAll(".post").length >= 3) {
+				button.disabled = true;
+			}
+			
+        });
+    }
+
+    postHandler(textbox1, postList1);
+    postHandler(textbox2, postList2);
+});
+
+
+
 
 
 
