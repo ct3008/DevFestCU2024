@@ -27,7 +27,7 @@ function equipItem(button) {
     const itemId = button.dataset.item;
 	console.log(itemId);
     
-    // updates img source in id0 category
+    // should update img source in id0 category
     const itemImage = document.querySelector(`#id0 #${itemId}`);
     if (itemImage && equippedImageSrc) {
         itemImage.src = equippedImageSrc;
@@ -63,7 +63,7 @@ equipButtons.forEach(button => {
 });
 
 function applyPNG() {
-    // apply accessory png to the HTML
+    // apply accessory png to the HTML. Could not implement in time
 }
 
 const button = document.getElementById("mybutton");
@@ -79,11 +79,8 @@ button.onclick = function() {
 	})();
 }
 
-// document.addEventListener("visibilitychange", function () {
-// 	console.log(Date.now());
-// });
 
-//change the screens
+//change the home screens
 let w = document.getElementById("homepage");
 let x = document.getElementById("milestone");
 let y = document.getElementById("settings");

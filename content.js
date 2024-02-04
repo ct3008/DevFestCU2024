@@ -6,10 +6,9 @@ catImage.style.position = 'fixed';
 catImage.style.top = '10%';
 catImage.style.left = '90%';
 catImage.style.transform = 'translate(-50%, -50%)';
-catImage.style.maxWidth = '30%'; // Ensure the image doesn't exceed the viewport width
-catImage.style.maxHeight = '30%'; // Ensure the image doesn't exceed the viewport height
+catImage.style.maxWidth = '30%';
+catImage.style.maxHeight = '30%';
 catImage.style.zIndex = '9999';
-
 
 
 document.body.append(catImage);
