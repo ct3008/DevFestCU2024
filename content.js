@@ -47,102 +47,45 @@ catImage.ondragstart = function() {
 	return false;
 }
 
-// async function test() {
-//     try {
-//         const response = await chrome.runtime.sendMessage({greeting: "hello"});
-//         console.log(response);
-//     }
-//     catch (error){
-//         console.log(error);
-//     }
-// }
 
-// test();
-
-
-//based off of https://medium.com/backticks-tildes/how-i-developed-apples-screen-time-chrome-extension-988e0c451894
-
-let tab = null;
-let current_host = "";
-let current_total = 0;
-let current_start = 0;
-
-//update total time in local storage
-async function end() {
-
-    //calculate new total time to include finished session
-    let total_time = Date.now() - current_start + current_total
-    console.log("total time:");
-    console.log(total_time);
-    try {
-        await chrome.storage.local.set({current_host: total_time});
-    } catch(error) {
-        console.log(error);
-    }  
-}
-
-//switch current tab info
-async function setActive() {
-    console.log("set active. current host:");
-    console.log(current_host);
-    
-    //if tabs have changed,
-    if (current_host != tab) {
-        console.log("tabs have changed");
-
-        //end old host
-        end();
-
-        //set new host, start, and total
-        current_host = tab;
-        current_start = Date.now();
-        try {
-            current_total = await chrome.storage.local.get([current_host]);
-            console.log("current total from get:")
-            console.log(result);
-        } catch(error) {
-            current_total = 0;
-            console.log(error);
-        }
-    }  
-}
+//track time:
 
 window.addEventListener("visibilitychange", function() {
     console.log("VISIBILITY");
-    tab = window.location.href;
-    console.log(tab);
-    setActive();
+    // tab = window.location.href;
+    // console.log(tab);
+    // setActive();
+    (async () => {
+        console.log("send message from content:");
+        const response = await chrome.runtime.sendMessage({greeting: "hello"});
+        // do something with response here, not outside the function
+        console.log(response);
+      })();
 });
-
-//when tabs are changed
-// document.addEventListener("visibilitychange", function () {
-//     // setActive();
-// });
-
 
 
 // recieve a message:
-// chrome.runtime.onMessage.addListener(
-//     function(request, sender, sendResponse) {
-//       console.log(sender.tab ?
-//                   "from a content script:" + sender.tab.url :
-//                   "from the extension");
-//       if (request.greeting === "hello") {
-//         console.log("Hello greeting");
-//         if (catImage.style.display == "none"){
-//             catImage.style.display = "block";
-//         }
-//         else {
-//             catImage.style.display = "none";
-//         }
-//         sendResponse({farewell: "goodbye"});
-//       }
-//       if (request.greeting === "tab") {
-//         console.log("TAB");
-//         tab = request;
-//         //setActive();
-//         sendResponse({farewell: "tab recieved"});
-//       }
-//     }
-//   );
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+      console.log(sender.tab ?
+                  "from a content script:" + sender.tab.url :
+                  "from the extension");
+      if (request.greeting === "hello") {
+        console.log("Hello greeting");
+        if (catImage.style.display == "none"){
+            catImage.style.display = "block";
+        }
+        else {
+            catImage.style.display = "none";
+        }
+        sendResponse({farewell: "goodbye"});
+      }
+    //   if (request.greeting === "tab") {
+    //     console.log("TAB");
+    //     tab = request;
+    //     //setActive();
+    //     sendResponse({farewell: "tab recieved"});
+    //   }
+    }
+  );
 
